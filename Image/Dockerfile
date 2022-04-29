@@ -1,0 +1,12 @@
+FROM pihole/pihole:latest
+RUN apt update && apt install -y unbound
+
+COPY unbound-pihole.conf /etc/unbound/unbound.conf.d/pi-hole.conf
+COPY unbound.conf /etc/unbound/unbound.conf
+COPY 99-edns.conf /etc/dnsmasq.d/99-edns.conf
+
+COPY lighttpd-external.conf /etc/lighttpd/external.conf 
+RUN mkdir /etc/services.d/unbound
+COPY unbound-run /etc/services.d/unbound/run
+
+ENTRYPOINT ./s6-init

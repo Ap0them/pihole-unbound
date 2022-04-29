@@ -14,7 +14,7 @@ services:
     environment:
       TZ: 'America/Chicago'
       WEBPASSWORD: 'raspberry'
-      #FTLCONF_REPLY_ADDR6: '2600:6c67:2100:667:ba27:ebff:fec8:8e46/64'
+      PIHOLE_DNS_: 127.0.0.1#5335;::1#5353
       QUERY_LOGGING: "false"
     # Volumes store your data between container upgrades
     volumes:
